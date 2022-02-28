@@ -17,8 +17,7 @@ class _NewPasswordState extends State<NewPassword> {
         title: Text('Reset Password',
           style: TextStyle(
               fontSize: 20, color: Colors.black,
-              fontFamily: Regular,
-              fontWeight: FontWeight.w600
+              fontFamily: SemiBold,
           ),
 
         ),
@@ -31,55 +30,54 @@ class _NewPasswordState extends State<NewPassword> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 120,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Recovery Password',
-                      style: TextStyle(
-                          fontSize: 25, color: Colors.black,
-                          fontFamily: Medium,
-                          fontWeight: FontWeight.w600
-                      ),
-
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text("Reset code was send to your Email. Please enter the code and create new password.",
-                  style: TextStyle(
-                      fontSize: 18, color: Colors.black.withOpacity(0.4),
-                      fontFamily: Medium
-                  ),
-                  textAlign: TextAlign.start,
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 120,
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 10,),
-                // First textfield started
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Recovery Password',
+                        style: TextStyle(
+                            fontSize: 24, color: Colors.black,
+                            fontFamily: Regular,
 
-                Padding(
-                  padding: const EdgeInsets.only( right: 20),
-                  child: Container(
+                        ),
+
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text("Reset code was send to your Email. Please enter the code and create new password.",
+                    style: TextStyle(
+                        fontSize: 14, color: Colors.black.withOpacity(0.4),
+                        fontFamily: Regular
+                    ),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 10,),
+                  // First textfield started
+
+                  Container(
                     height: 60,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
@@ -87,17 +85,17 @@ class _NewPasswordState extends State<NewPassword> {
                       borderRadius: BorderRadius.circular(06),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 2,
-                          offset: Offset(1, 3), // changes position of shadow
+                          color: Color(0xff908E8E).withOpacity(0.75),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4), // changes position of shadow
                         ),
                       ],
                     ),
                     child: TextField(
                       obscureText: _isObscure,
                       keyboardType: TextInputType.text,
-                      cursorColor: Colors.white,
+                      cursorColor: Colors.grey,
                       decoration: InputDecoration(
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -108,11 +106,14 @@ class _NewPasswordState extends State<NewPassword> {
                             )),
                         hintText: 'Enter New Password',
                         hintStyle: TextStyle(
-                          fontSize: 18, ),
+                            fontSize: 16,fontFamily: Regular,
+                            color: Color(0xff908E8E)),
                         suffixIcon: IconButton(
                             color: Colors.black,
                             icon: Icon(
-                              _isObscure ? Icons.visibility : Icons.visibility_off,
+                              _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                              color: Color(0xffC4C4C4)
+                              ,
                             ),
                             onPressed: () {
                               setState(() {
@@ -122,14 +123,11 @@ class _NewPasswordState extends State<NewPassword> {
                       ),
                     ),
                   ),
-                ),
 
-                SizedBox(height: 10,),
-                // First textfield started
+                  SizedBox(height: 10,),
+                  // First textfield started
 
-                Padding(
-                  padding: const EdgeInsets.only( right: 20),
-                  child: Container(
+                  Container(
                     height: 60,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
@@ -137,17 +135,17 @@ class _NewPasswordState extends State<NewPassword> {
                       borderRadius: BorderRadius.circular(06),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 2,
-                          offset: Offset(1, 3), // changes position of shadow
+                          color: Color(0xff908E8E).withOpacity(0.75),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4), // changes position of shadow
                         ),
                       ],
                     ),
                     child: TextField(
                       obscureText: _isObscure,
                       keyboardType: TextInputType.text,
-                      cursorColor: Colors.white,
+                      cursorColor: Colors.grey,
                       decoration: InputDecoration(
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -158,11 +156,14 @@ class _NewPasswordState extends State<NewPassword> {
                             )),
                         hintText: 'Confirm New Password',
                         hintStyle: TextStyle(
-                          fontSize: 18, ),
+                            fontSize: 16,fontFamily: Regular,
+                            color: Color(0xff908E8E)),
                         suffixIcon: IconButton(
                             color: Colors.black,
                             icon: Icon(
-                              _isObscure ? Icons.visibility : Icons.visibility_off,
+                              _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                              color: Color(0xffC4C4C4)
+                              ,
                             ),
                             onPressed: () {
                               setState(() {
@@ -172,35 +173,38 @@ class _NewPasswordState extends State<NewPassword> {
                       ),
                     ),
                   ),
-                ),
 
 
-                SizedBox(
-                  height: 50,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width/1.1,
-                  height: 57,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: RaisedButton(
-                      child: Text('Send',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 20),),
-                      onPressed: (){
-                        //Navigator.pushNamed(context, "Otp");
-                      },
-                      color: cyan,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height/2.7
+                  ),
+
+                  Container(
+                    width: MediaQuery.of(context).size.width/1.1,
+                    height: 60,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: RaisedButton(
+                        child: Text('Reset Password',style: TextStyle(color: Colors.white,fontSize: 20,
+                        fontFamily: Medium
+                        ),),
+                        onPressed: (){
+                          //Navigator.pushNamed(context, "Otp");
+                        },
+                        color: cyan,
+                      ),
                     ),
                   ),
-                ),
 
-              ],
+                ],
+              ),
             ),
-          ),
-          // First textfield ended
+            // First textfield ended
 
 
 
-        ],
+          ],
+        ),
       ),
     );
   }

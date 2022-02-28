@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:forus_app/Data.dart';
+
+import '../Data.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -7,7 +8,8 @@ class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
-
+String Regular='Regular';
+var formkey = GlobalKey<FormState>();
 final email = TextEditingController();
 bool _isObscure = true;
 
@@ -16,170 +18,168 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          SizedBox(
-            height: 60,
-          ),
-          Center(
-            child: Container(child: Image.asset('assets/Pic1.png')),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Container(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
               height: 60,
-              width: MediaQuery.of(context).size.width / 1.1,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(06),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 2,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: TextFormField(
+            ),
+            Center(
+              child: Container(child: Image.asset('assets/Pic1.png')),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Container(
+                height: 60,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(06),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xff908E8E).withOpacity(0.75),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  keyboardType: TextInputType.text,
                   cursorColor: Colors.white,
-                  controller: email,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                  decoration: const InputDecoration(
-                    filled: true,
+                  decoration: InputDecoration(
                     fillColor: Colors.white,
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                        borderRadius: BorderRadius.circular(40),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        )),
+                    hintText: 'Email Address',
+                    hintStyle: TextStyle(
+                        fontSize: 16,fontFamily: Regular,
+                        color: Color(0xff908E8E)),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Container(
+                height: 60,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(06),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xff908E8E).withOpacity(0.75),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  obscureText: _isObscure,
+                  keyboardType: TextInputType.text,
+                  cursorColor: Colors.grey,
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(40),
+                        borderSide: BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        )),
+                    hintText: 'Password',
+                    hintStyle: TextStyle(
+                        fontSize: 16,fontFamily: Regular,
+                    color: Color(0xff908E8E)),
+                    suffixIcon: IconButton(
+                        color: Colors.black,
+                        icon: Icon(
+                          _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                            color: Color(0xffC4C4C4)
+                            ,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        }),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'ForgotPassword');
+                    },
+                    style: TextButton.styleFrom(
+                      primary: Colors.black,
+                    ),
+                    child: Text(
+                      'Forgot Password?',
+                      style: TextStyle(fontSize: 14,
+                        color: cyan,
+                        fontFamily: Medium,
                       ),
                     ),
-                      hintText: 'Email Address',
-                      hintStyle: TextStyle(
-                          fontSize: 18,),
-                  )),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Container(
-              height: 60,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(06),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 2,
-                    offset: Offset(1, 3), // changes position of shadow
                   ),
                 ],
               ),
-              child: TextField(
-                obscureText: _isObscure,
-                keyboardType: TextInputType.text,
-                cursorColor: Colors.white,
-                decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40),
-                      borderSide: BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      )),
-                  hintText: 'Password',
-                  hintStyle: TextStyle(
-                      fontSize: 18, ),
-                  suffixIcon: IconButton(
-                      color: Colors.black,
-                      icon: Icon(
-                        _isObscure ? Icons.visibility : Icons.visibility_off,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _isObscure = !_isObscure;
-                        });
-                      }),
-                ),
-              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Container(
+                height: 60,
+                width: MediaQuery.of(context).size.width,
+                child: RaisedButton(
+                  color: cyan,
                   onPressed: () {
-                    Navigator.pushNamed(context, 'ForgotPassword');
+                    Navigator.pushNamed(context, 'HomeScreen');
                   },
-                  style: TextButton.styleFrom(
-                    primary: Colors.black,
-                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
                   child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(fontSize: 18,
-                      color: cyan
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Container(
-              height: 60,
-              width: MediaQuery.of(context).size.width,
-              child: RaisedButton(
-                color: cyan,
-                onPressed: () {
-                  Navigator.pushNamed(context, 'HomeScreen');
-                },
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: Text(
-                  "Login",
-                  style: TextStyle(
+                    "Login",
+                    style: TextStyle(
 
-                      fontSize: 18,
-                      color:
-                      Colors.white),
+                        fontSize: 18,
+                        color:
+                        Colors.white),
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 40,),
-          Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Row(
-                children: [
-                  Expanded(
-                      child: Divider(
-                        endIndent: 20,
-                        color: Colors.black,
-                      )
-                  ),
+            SizedBox(height: 40,),
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              child: Row(
+                  children: [
+                    Expanded(
+                        child: Divider(
+                          endIndent: 20,
+                          color: Colors.black,
+                        )
+                    ),
 
-                  Text("OR",style: TextStyle(fontSize: 16,color: grey),),
+                    Text("OR",style: TextStyle(fontSize: 16,color: grey),),
 
                   Expanded(
                       child: Divider(
@@ -208,8 +208,8 @@ class _LoginState extends State<Login> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 2,
+                      spreadRadius: 0,
+                      blurRadius: 4,
                       offset: Offset(1, 3), // changes position of shadow
                     ),
                   ],
@@ -238,7 +238,9 @@ class _LoginState extends State<Login> {
               ),
             ],
           ),
-          Spacer(),
+         SizedBox(
+           height: MediaQuery.of(context).size.height/9,
+         ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -254,10 +256,11 @@ class _LoginState extends State<Login> {
             ],
           ),
           SizedBox(
-            height: 30,
+            height: 10,
           )
         ],
       ),
+    )
     );
   }
 }

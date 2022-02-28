@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Data.dart';
+import '../../Data.dart';
+import '../../Data.dart';
 class Feedback0 extends StatefulWidget {
   const Feedback0({Key? key}) : super(key: key);
 
@@ -23,8 +24,8 @@ class _Feedback0State extends State<Feedback0> {
       appBar: AppBar(
         title: Text('Feedback',
         style: TextStyle(
-           fontWeight: FontWeight.w700,
-          fontSize: 24,
+          fontFamily: SemiBold,
+          fontSize: 20,
           color: Colors.black
         ),
         ),
@@ -53,7 +54,8 @@ class _Feedback0State extends State<Feedback0> {
                   'Email Address',
                   style: TextStyle(
                      // fontWeight: FontWeight.w700,
-                      fontSize: 18,
+                    fontFamily: Medium,
+                      fontSize: 16,
                       color: Colors.black
                   ),
                 ),
@@ -72,10 +74,10 @@ class _Feedback0State extends State<Feedback0> {
                 borderRadius: BorderRadius.circular(06),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 2,
-                    offset: Offset(0, 3), // changes position of shadow
+                    color: Color(0xff908E8E).withOpacity(0.75),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
                   ),
                 ],
               ),
@@ -102,7 +104,9 @@ class _Feedback0State extends State<Feedback0> {
                     ),
                     hintText: 'Email Address',
                     hintStyle: TextStyle(
-                      fontSize: 18,),
+                      fontSize: 18,
+                    fontFamily: "Regular"
+                    ),
                   )),
             ),
           ),
@@ -115,9 +119,10 @@ class _Feedback0State extends State<Feedback0> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Email Address',
+                  'Description',
                   style: TextStyle(
                     // fontWeight: FontWeight.w700,
+                    fontFamily: Medium,
                       fontSize: 18,
                       color: Colors.black
                   ),
@@ -138,10 +143,10 @@ class _Feedback0State extends State<Feedback0> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 2,
-                    offset: Offset(0, 3), // changes position of shadow
+                    color: Color(0xff908E8E).withOpacity(0.75),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // changes position of shadow
                   ),
                 ],
               ),
@@ -151,7 +156,7 @@ class _Feedback0State extends State<Feedback0> {
                   hintText: 'Write message...!',
                   hintStyle: TextStyle(
                       fontSize: 14,
-
+                      fontFamily: Regular,
                       color: Colors.black.withOpacity(0.6)),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),

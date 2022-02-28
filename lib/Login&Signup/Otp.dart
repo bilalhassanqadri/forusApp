@@ -24,8 +24,7 @@ class _OtpState extends State<Otp> {
         title: Text('Verification Code',
           style: TextStyle(
               fontSize: 20, color: Colors.black,
-              fontFamily: Regular,
-              fontWeight: FontWeight.w600
+              fontFamily: SemiBold,
           ),
 
         ),
@@ -56,15 +55,13 @@ class _OtpState extends State<Otp> {
                     children: [
                       Text('Verification Code ', style: TextStyle(fontSize: 24,
                           fontFamily: Medium,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
+                          color: Colors.black,),
                       ),
                       SizedBox(height: 13,),
                       Padding(
                         padding: const EdgeInsets.only(left: 20, right: 30),
                         child: Text('Please check your messages for four-digit security code and enter it below', style: TextStyle(
-                            fontSize: 16, fontFamily: Medium, color: grey),
+                            fontSize: 14, fontFamily: Medium, color: grey),
                           textAlign: TextAlign.center,
                         ),),
 
@@ -102,7 +99,7 @@ class _OtpState extends State<Otp> {
                         },
                         decoration: const InputDecoration(
                           filled: true,
-                          fillColor: Color(0xffBCEFE3),
+                          fillColor: cyan1,
 
                           focusedBorder: OutlineInputBorder(
                               borderSide:
@@ -138,7 +135,7 @@ class _OtpState extends State<Otp> {
                         },
                         decoration: const InputDecoration(
                           filled: true,
-                          fillColor: Color(0xffBCEFE3),
+                          fillColor: cyan1,
 
                           focusedBorder: OutlineInputBorder(
                               borderSide:
@@ -174,7 +171,7 @@ class _OtpState extends State<Otp> {
                         },
                         decoration: const InputDecoration(
                           filled: true,
-                          fillColor: Color(0xffBCEFE3),
+                          fillColor: cyan1,
 
                           focusedBorder: OutlineInputBorder(
                               borderSide:
@@ -210,7 +207,7 @@ class _OtpState extends State<Otp> {
                         },
                         decoration: const InputDecoration(
                           filled: true,
-                          fillColor: Color(0xffBCEFE3),
+                          fillColor: cyan1,
 
                           focusedBorder: OutlineInputBorder(
                               borderSide:
@@ -234,16 +231,18 @@ class _OtpState extends State<Otp> {
 
             SizedBox(height: 10,),
             Center(
-              child: Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(text:" Did not recieve a code? ",style: TextStyle(color: Colors.black)),
-                    TextSpan(
-                      text: 'Resend it',
-                      style: TextStyle(color: cyan,decoration:TextDecoration.underline),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don’t received a code? "),
+                  TextButton(
+                    onPressed: () {
+                    },
+                    child: Text("Send again",
+                      style: TextStyle(color: cyan,fontWeight: FontWeight.bold),
                     ),
-                  ],
-                ),
+                  )
+                ],
               ),
             ),
             SizedBox(height: 10,),
@@ -255,7 +254,9 @@ class _OtpState extends State<Otp> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: RaisedButton(
-                    child: Text('Next',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 20),),
+                    child: Text('Next',style: TextStyle(color: Colors.white,fontSize: 22,
+                    fontFamily: Medium
+                    ),),
                     onPressed: (){
                      Navigator.pushNamed(context, "NewPassword");
                     },

@@ -81,6 +81,9 @@ flutter:
     - family: Medium
       fonts:
         - asset: fonts/Medium.ttf
+    - family: SemiBold
+      fonts:
+        - asset: fonts/SemiBold.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

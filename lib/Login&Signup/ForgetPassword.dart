@@ -22,8 +22,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         title: Text('FORGOT PASSWORD',
           style: TextStyle(
               fontSize: 20, color: Colors.black,
-              fontFamily: Regular,
-              fontWeight: FontWeight.w600
+              fontFamily: SemiBold,
           ),
 
         ),
@@ -32,16 +31,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             onPressed: (){
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back_ios_outlined, color: Colors.black,)),
+            icon: Icon(Icons.arrow_back, color: Colors.black,)),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 120,
-          ),
+          SizedBox(height: 120,),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
@@ -49,11 +46,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text('FORGOT PASSWORD',
+                    Text('FORGOT PASSWORD?',
                       style: TextStyle(
-                          fontSize: 25, color: Colors.black,
+                          fontSize: 24, color: Colors.black,
                       fontFamily: Regular,
-                        fontWeight: FontWeight.w600
                       ),
 
                     ),
@@ -64,7 +60,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
                 Text("Please enter your Email below to receive your password reset instructions.",
                   style: TextStyle(
-                      fontSize: 18, color: Colors.black.withOpacity(0.4),
+                      fontSize: 14, color: Colors.black.withOpacity(0.4),
                   fontFamily: Regular
                   ),
                   textAlign: TextAlign.start,
@@ -73,53 +69,53 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 40,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding:  EdgeInsets.only(left: 0),
-                  child: Text(
-                    'Email Address',
-                    style: TextStyle(
-                        fontSize: 18, color: Colors.black,
-                    fontFamily: Medium
-                    ),
+                Text(
+                  'Email Address',
+                  style: TextStyle(
+                      fontSize: 18, color: Colors.black,
+                  fontFamily: Medium
                   ),
                 ),
                 SizedBox(height: 10,),
                 // First textfield started
 
                 Container(
-                  height: 57,
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  child: TextFormField(
-                    cursorColor: cyan,
-                    controller: phonenumber,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
-                    decoration:const  InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xffF9F9F9),
-
-                        focusedBorder: OutlineInputBorder(
-                            borderSide:
-                            BorderSide.none,
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(10.0))),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius:  BorderRadius.all(
-                            Radius.circular(10.0),
-                          ),
-                        ),
-                        hintText: 'Email Address'),
+                  height: 60,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(06),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xff908E8E).withOpacity(0.75),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: Offset(0, 4), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: TextField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.white,
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(40),
+                          borderSide: BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          )),
+                      hintText: 'Email Address',
+                      hintStyle: TextStyle(
+                          fontSize: 16,fontFamily: Regular,
+                          color: Color(0xff908E8E)),
+                    ),
                   ),
                 ),
 
@@ -128,12 +124,15 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   height: 50,
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width/1.1,
+                  width: MediaQuery.of(context).size.width,
                   height: 57,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: RaisedButton(
-                      child: Text('Send',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400,fontSize: 20),),
+                      child: Text('Send',style: TextStyle(color: Colors.white,fontSize: 22,
+                        fontFamily: Medium
+
+                      ),),
                       onPressed: (){
                         Navigator.pushNamed(context, "Otp");
                       },
