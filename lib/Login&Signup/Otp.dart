@@ -7,7 +7,6 @@ class Otp extends StatefulWidget {
   @override
   _OtpState createState() => _OtpState();
 }
-
 class _OtpState extends State<Otp> {
   final GlobalKey<FormState> _homeKey = GlobalKey<FormState>(
       debugLabel: '_homeScreenkey');
@@ -258,7 +257,10 @@ class _OtpState extends State<Otp> {
                     fontFamily: Medium
                     ),),
                     onPressed: (){
-                     Navigator.pushNamed(context, "NewPassword");
+                   /*   if(_homeKey.currentState!.validate()){
+                        Navigator.pushNamed(context, "NewPassword");
+                      }*/
+                      Navigator.pushNamed(context, "NewPassword");
                     },
                     color: cyan,
                   ),

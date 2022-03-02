@@ -1,3 +1,5 @@
+
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:flutter/material.dart';
 
 import '../Data.dart';
@@ -13,8 +15,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   final GlobalKey<FormState> _homeKey =   GlobalKey<FormState>(debugLabel: '_homeScreenkey');
 
-
-  final phonenumber = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final Email12 = TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -100,21 +102,31 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       ),
                     ],
                   ),
-                  child: TextField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Colors.white,
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(40),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
-                          )),
-                      hintText: 'Email Address',
-                      hintStyle: TextStyle(
-                          fontSize: 16,fontFamily: Regular,
-                          color: Color(0xff908E8E)),
+                  child: Form(
+                    key: _formKey,
+                    child: TextFormField(
+                      keyboardType: TextInputType.text,
+                      controller: Email12,
+                      validator: MultiValidator(
+                          [
+                            RequiredValidator(errorText: 'Required'),
+                            EmailValidator(errorText: "Not a Valid Email"),
+                          ]
+                      ),
+                      cursorColor: Colors.white,
+                      decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
+                            )),
+                        hintText: 'Email Address',
+                        hintStyle: TextStyle(
+                            fontSize: 16,fontFamily: Regular,
+                            color: Color(0xff908E8E)),
+                      ),
                     ),
                   ),
                 ),
@@ -134,6 +146,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
                       ),),
                       onPressed: (){
+                       /* if(_formKey.currentState!.validate()){
+                          Navigator.pushNamed(context, "Otp");
+                        }*/
                         Navigator.pushNamed(context, "Otp");
                       },
                       color: cyan,

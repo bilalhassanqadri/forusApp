@@ -26,8 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
         4,
             (index) =>  Card(
               child: Container(
-                width: 428,
-                height: 200,
+                width: MediaQuery.of(context).size.width,
+
                 decoration: BoxDecoration(
                   color: Colors.black,
 
@@ -44,13 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
     backgroundColor: Colors.white,
     elevation: 0,
-        leading: IconButton(
-
-          onPressed: () {
-            scaffoldKey.currentState?.openDrawer();
-          },
-          icon: Icon(Icons.menu_outlined), color: Colors.black,
-        ),
+      iconTheme: IconThemeData(color: Colors.black ,
+      ),
     ),
       drawer: drawer(),
       body: ListView(

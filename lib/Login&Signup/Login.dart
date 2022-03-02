@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 import '../Data.dart';
 
@@ -8,12 +10,17 @@ class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
+final _formKey = GlobalKey<FormState>();
 String Regular='Regular';
 var formkey = GlobalKey<FormState>();
+final EmailController1 = TextEditingController();
+final PasswordController = TextEditingController();
+
 final email = TextEditingController();
 bool _isObscure = true;
-
 class _LoginState extends State<Login> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,94 +37,126 @@ class _LoginState extends State<Login> {
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(06),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff908E8E).withOpacity(0.75),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        )),
-                    hintText: 'Email Address',
-                    hintStyle: TextStyle(
-                        fontSize: 16,fontFamily: Regular,
-                        color: Color(0xff908E8E)),
-                  ),
-                ),
-              ),
-            ),
+
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(06),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff908E8E).withOpacity(0.75),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  obscureText: _isObscure,
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.grey,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        )),
-                    hintText: 'Password',
-                    hintStyle: TextStyle(
-                        fontSize: 16,fontFamily: Regular,
-                    color: Color(0xff908E8E)),
-                    suffixIcon: IconButton(
-                        color: Colors.black,
-                        icon: Icon(
-                          _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                            color: Color(0xffC4C4C4)
-                            ,
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(06),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xff908E8E).withOpacity(0.75),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: TextFormField(
+                        controller: EmailController1,
+                        validator: MultiValidator(
+                            [
+                              RequiredValidator(errorText: 'Required'),
+                              EmailValidator(errorText: "Not a Valid Email"),
+                            ]
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _isObscure = !_isObscure;
-                          });
-                        }),
+
+                        //validator: (value) => EmailValidator.validate(value) ? null : "Please enter a valid email",
+                        keyboardType: TextInputType.text,
+                        cursorColor: Colors.white,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              )),
+                          hintText: 'Email Address',
+                          hintStyle: TextStyle(
+                              fontSize: 16,fontFamily: Regular,
+                              color: Color(0xff908E8E)),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(06),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xff908E8E).withOpacity(0.75),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: TextFormField(
+                        controller: PasswordController,
+
+                        obscureText: _isObscure,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          else if(value.length<8){
+                            return 'Password should be 8 characters long';
+                          }
+                          return null;
+                        },
+                        keyboardType: TextInputType.text,
+                        cursorColor: Colors.grey,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(6),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              )),
+                          hintText: 'Password',
+                          hintStyle: TextStyle(
+                              fontSize: 16,fontFamily: Regular,
+                              color: Color(0xff908E8E)),
+                          suffixIcon: IconButton(
+                              color: Colors.black,
+                              icon: Icon(
+                                _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                                color: Color(0xffC4C4C4)
+                                ,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _isObscure = !_isObscure;
+                                });
+                              }),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.only(right: 20),
               child: Row(
@@ -152,7 +191,11 @@ class _LoginState extends State<Login> {
                 child: RaisedButton(
                   color: cyan,
                   onPressed: () {
+                    /*if(_formKey.currentState!.validate()){
+                      Navigator.pushNamed(context, 'HomeScreen');
+                    }*/
                     Navigator.pushNamed(context, 'HomeScreen');
+
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),

@@ -6,8 +6,13 @@ class NewPassword extends StatefulWidget {
   @override
   _NewPasswordState createState() => _NewPasswordState();
 }
-final email = TextEditingController();
+
+
+final password1 = TextEditingController();
+final password2 = TextEditingController();
+final _formKey = GlobalKey<FormState>();
 bool _isObscure = true;
+bool _isObscure1 = true;
 class _NewPasswordState extends State<NewPassword> {
   @override
   Widget build(BuildContext context) {
@@ -77,100 +82,128 @@ class _NewPasswordState extends State<NewPassword> {
                   SizedBox(height: 10,),
                   // First textfield started
 
-                  Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(06),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xff908E8E).withOpacity(0.75),
-                          spreadRadius: 0,
-                          blurRadius: 4,
-                          offset: Offset(0, 4), // changes position of shadow
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 60,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(06),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xff908E8E).withOpacity(0.75),
+                                spreadRadius: 0,
+                                blurRadius: 4,
+                                offset: Offset(0, 4), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            obscureText: _isObscure,
+                            keyboardType: TextInputType.text,
+                            cursorColor: Colors.grey,
+                            controller: password2,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              else if(value.length<8){
+                                return 'Password should be 8 characters long';
+                              }
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                  borderSide: BorderSide(
+                                    width: 0,
+                                    style: BorderStyle.none,
+                                  )),
+                              hintText: 'Enter New Password',
+                              hintStyle: TextStyle(
+                                  fontSize: 16,fontFamily: Regular,
+                                  color: Color(0xff908E8E)),
+                              suffixIcon: IconButton(
+                                  color: Colors.black,
+                                  icon: Icon(
+                                    _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                                    color: Color(0xffC4C4C4)
+                                    ,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _isObscure = !_isObscure;
+                                    });
+                                  }),
+                            ),
+                          ),
+                        ),
+
+                        SizedBox(height: 10,),
+                        // First textfield started
+
+                        Container(
+                          height: 60,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(06),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xff908E8E).withOpacity(0.75),
+                                spreadRadius: 0,
+                                blurRadius: 4,
+                                offset: Offset(0, 4), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: TextFormField(
+                            obscureText: _isObscure,
+                            controller: password1,
+                            keyboardType: TextInputType.text,
+
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              else if(value.length<8){
+                                return 'Password should be 8 characters long';
+                              }
+                              return null;
+                            },
+                            cursorColor: Colors.grey,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                  borderSide: BorderSide(
+                                    width: 0,
+                                    style: BorderStyle.none,
+                                  )),
+                              hintText: 'Confirm New Password',
+                              hintStyle: TextStyle(
+                                  fontSize: 16,fontFamily: Regular,
+                                  color: Color(0xff908E8E)),
+                              suffixIcon: IconButton(
+                                  color: Colors.black,
+                                  icon: Icon(
+                                    _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                                    color: Color(0xffC4C4C4)
+                                    ,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _isObscure = !_isObscure;
+                                    });
+                                  }),
+                            ),
+                          ),
                         ),
                       ],
-                    ),
-                    child: TextField(
-                      obscureText: _isObscure,
-                      keyboardType: TextInputType.text,
-                      cursorColor: Colors.grey,
-                      decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
-                            )),
-                        hintText: 'Enter New Password',
-                        hintStyle: TextStyle(
-                            fontSize: 16,fontFamily: Regular,
-                            color: Color(0xff908E8E)),
-                        suffixIcon: IconButton(
-                            color: Colors.black,
-                            icon: Icon(
-                              _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                              color: Color(0xffC4C4C4)
-                              ,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _isObscure = !_isObscure;
-                              });
-                            }),
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(height: 10,),
-                  // First textfield started
-
-                  Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(06),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xff908E8E).withOpacity(0.75),
-                          spreadRadius: 0,
-                          blurRadius: 4,
-                          offset: Offset(0, 4), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: TextField(
-                      obscureText: _isObscure,
-                      keyboardType: TextInputType.text,
-                      cursorColor: Colors.grey,
-                      decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(40),
-                            borderSide: BorderSide(
-                              width: 0,
-                              style: BorderStyle.none,
-                            )),
-                        hintText: 'Confirm New Password',
-                        hintStyle: TextStyle(
-                            fontSize: 16,fontFamily: Regular,
-                            color: Color(0xff908E8E)),
-                        suffixIcon: IconButton(
-                            color: Colors.black,
-                            icon: Icon(
-                              _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                              color: Color(0xffC4C4C4)
-                              ,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _isObscure = !_isObscure;
-                              });
-                            }),
-                      ),
                     ),
                   ),
 
@@ -188,8 +221,11 @@ class _NewPasswordState extends State<NewPassword> {
                         child: Text('Reset Password',style: TextStyle(color: Colors.white,fontSize: 20,
                         fontFamily: Medium
                         ),),
-                        onPressed: (){
-                          //Navigator.pushNamed(context, "Otp");
+                        onPressed: () {
+    /*  if(_formKey.currentState!.validate()){
+                            Navigator.pushNamed(context, "Otp");
+                          }*/
+
                         },
                         color: cyan,
                       ),

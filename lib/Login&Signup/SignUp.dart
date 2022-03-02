@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 import '../Data.dart';
 class SignUp extends StatefulWidget {
@@ -7,7 +8,15 @@ class SignUp extends StatefulWidget {
   @override
   _SignUpState createState() => _SignUpState();
 }
-final email = TextEditingController();
+
+
+
+
+var formkey = GlobalKey<FormState>();
+final name = TextEditingController();
+final ZipCode = TextEditingController();
+final Password = TextEditingController();
+final SignUpEmailController = TextEditingController();
 bool _isObscure = true;
 
 class _SignUpState extends State<SignUp> {
@@ -28,217 +37,257 @@ class _SignUpState extends State<SignUp> {
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(06),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff908E8E).withOpacity(0.75),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        )),
-                    hintText: 'Name',
-                    hintStyle: TextStyle(
-                        fontSize: 16,fontFamily: Regular,
-                        color: Color(0xff908E8E)),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(06),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff908E8E).withOpacity(0.75),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        )),
-                    hintText: 'Email Address',
-                    hintStyle: TextStyle(
-                        fontSize: 16,fontFamily: Regular,
-                        color: Color(0xff908E8E)),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(06),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff908E8E).withOpacity(0.75),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  obscureText: _isObscure,
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.grey,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        )),
-                    hintText: 'Password',
-                    hintStyle: TextStyle(
-                        fontSize: 16,fontFamily: Regular,
-                        color: Color(0xff908E8E)),
-                    suffixIcon: IconButton(
-                        color: Colors.black,
-                        icon: Icon(
-                          _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                          color: Color(0xffC4C4C4)
-                          ,
+            Form(
+              key: formkey,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(06),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xff908E8E).withOpacity(0.75),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: TextFormField(
+                        keyboardType: TextInputType.text,
+                        cursorColor: Colors.white,
+                        controller: name,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              )),
+                          hintText: 'Name',
+                          hintStyle: TextStyle(
+                              fontSize: 16,fontFamily: Regular,
+                              color: Color(0xff908E8E)),
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _isObscure = !_isObscure;
-                          });
-                        }),
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(06),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xff908E8E).withOpacity(0.75),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: TextFormField(
+                        keyboardType: TextInputType.text,
+                        cursorColor: Colors.white,
+                        controller: SignUpEmailController,
+                        validator: MultiValidator(
+                            [
+                              RequiredValidator(errorText: 'Required'),
+                              EmailValidator(errorText: "Not a Valid Email"),
+                            ]
+                        ),
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              )),
+                          hintText: 'Email Address',
+                          hintStyle: TextStyle(
+                              fontSize: 16,fontFamily: Regular,
+                              color: Color(0xff908E8E)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(06),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xff908E8E).withOpacity(0.75),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: TextFormField(
+                        obscureText: _isObscure,
+                        keyboardType: TextInputType.text,
+                        controller: Password,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          else if(value.length<8){
+                            return 'Password should be 8 characters long';
+                          }
+                          return null;
+                        },
+                        cursorColor: Colors.grey,
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              )),
+                          hintText: 'Password',
+                          hintStyle: TextStyle(
+                              fontSize: 16,fontFamily: Regular,
+                              color: Color(0xff908E8E)),
+                          suffixIcon: IconButton(
+                              color: Colors.black,
+                              icon: Icon(
+                                _isObscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                                color: Color(0xffC4C4C4)
+                                ,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _isObscure = !_isObscure;
+                                });
+                              }),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(06),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xff908E8E).withOpacity(0.75),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: TextFormField(
+                        keyboardType: TextInputType.text,
+                        cursorColor: Colors.white,
+                        controller: ZipCode,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              )),
+                          hintText: 'Zip Code',
+                          hintStyle: TextStyle(
+                              fontSize: 16,fontFamily: Regular,
+                              color: Color(0xff908E8E)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Container(
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(06),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xff908E8E).withOpacity(0.75),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child:Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            hint: Text("Select Code",
+                            style: TextStyle(
+                                fontSize: 16,fontFamily: Regular,
+                                color: Color(0xff908E8E)),
+                            ),
+                            items: <String>['A', 'B', 'C', 'D'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (items) {},
+                          ),
+                        ),
+                      )
+                    ),
+                  ),
+                ],
               ),
             ),
 
-            SizedBox(
-              height: 15,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(06),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff908E8E).withOpacity(0.75),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        )),
-                    hintText: 'Zip Code',
-                    hintStyle: TextStyle(
-                        fontSize: 16,fontFamily: Regular,
-                        color: Color(0xff908E8E)),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
 
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(06),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff908E8E).withOpacity(0.75),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        )),
-                    hintText: 'Select Code',
-                    hintStyle: TextStyle(
-                        fontSize: 16,fontFamily: Regular,
-                        color: Color(0xff908E8E)),
-                  suffixIcon: IconButton(
-                    onPressed: (){},
-                    icon: Icon(Icons.keyboard_arrow_down),
-                  )
-                  ),
-                ),
-              ),
-            ),
+
+
             SizedBox(height: 40,),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
@@ -248,6 +297,9 @@ class _SignUpState extends State<SignUp> {
                 child: RaisedButton(
                   color: cyan,
                   onPressed: () {
+                    /*  if(formkey.currentState!.validate()){
+                      Navigator.pushNamed(context, 'HomeScreen');
+                    }*/
                     //Navigator.pushNamed(context, 'SignUp');
                   },
                   shape: RoundedRectangleBorder(
