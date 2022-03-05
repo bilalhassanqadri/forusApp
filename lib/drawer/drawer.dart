@@ -150,31 +150,6 @@ class _drawerState extends State<drawer> {
                 height: 22,
               ),
 
-
-
-              InkWell(
-                onTap: (){
-                  Navigator.pushNamed(context, "settings");
-                },
-                child: Row(
-                  children: [
-                    Image.asset('assets/settings.png'),
-
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('settings',
-                      style: TextStyle(fontSize: 16,
-                        fontFamily: Regular, color: darkgrey,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 22,
-              ),
-
 //Request for Advertising
 
               InkWell(
@@ -225,6 +200,28 @@ class _drawerState extends State<drawer> {
                 height: 22,
               ),
 
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, "settings");
+                },
+                child: Row(
+                  children: [
+                    Image.asset('assets/settings.png'),
+
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('settings',
+                      style: TextStyle(fontSize: 16,
+                        fontFamily: Regular, color: darkgrey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 22,
+              ),
 
 //Logout
               InkWell(

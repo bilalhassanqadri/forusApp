@@ -31,54 +31,58 @@ class SelectCard extends StatelessWidget {
     final TextStyle textStyle = TextStyle(
     );
     return InkWell(
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          //color: Colors.orange
-        ),
+     child: Card(
+        elevation: 0,
         child: Stack(
           children: [
             Container(
-              child: Image.asset(choice.image,
+              height: 225,
+              width:
+              MediaQuery.of(context).size.width / 2.4,
+              child: Image.asset(
+                choice.image,
                 fit: BoxFit.fill,
-
               ),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12)
-              ),
+                  borderRadius:
+                  BorderRadius.circular(10)),
             ),
             Positioned(
-              top: 162,
+              top: 152,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
                   child: BackdropFilter(
-
-                      filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0,
+                      filter: ImageFilter.blur(
+                        sigmaX: 10.0,
+                        sigmaY: 10.0,
                       ),
                       child: Container(
-                        width: MediaQuery.of(context).size.width/2.4,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(10),
+                              bottomRight: Radius.circular(10),
+                            )
+                        ),
+                        width: MediaQuery.of(context)
+                            .size
+                            .width /
+                            2.4,
                         height: 37,
                         child: Center(
-                          child: Text(choice.title,
+                          child: Text(
+                            choice.title,
                             style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: Regular,
-                                fontWeight: FontWeight.bold
-                            ),),
-
+                              fontSize: 18,
+                              fontFamily: Medium,
+                            ),
+                          ),
                         ),
-
-                      )
-                  )
-              ),
+                      ))),
             ),
           ],
-
         ),
       ),
-      onTap: (){
-        Navigator.pushNamed(context, 'SelectCategories');
-      },
+
     );
   }
 }
