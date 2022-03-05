@@ -187,8 +187,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     borderRadius:
                                         BorderRadius.circular(10)),
                               ),
-                              Positioned(
-                                top: 152,
+                              Align(
+                                alignment: Alignment.bottomLeft,
                                 child: ClipRRect(
                                     borderRadius: BorderRadius.circular(4),
                                     child: BackdropFilter(
@@ -197,16 +197,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                           sigmaY: 10.0,
                                         ),
                                         child: Container(
+                                          width: MediaQuery.of(context).size.width/ 2.4,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(10),
                                               bottomRight: Radius.circular(10),
                                             )
                                           ),
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              2.4,
                                           height: 37,
                                           child: Center(
                                             child: Text(
