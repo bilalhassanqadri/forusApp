@@ -264,7 +264,7 @@ class _SignUpState extends State<SignUp> {
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
-                            hint: Text("Select Code",
+                            hint: Text("Select City",
                             style: TextStyle(
                                 fontSize: 16,fontFamily: Regular,
                                 color: Color(0xff908E8E)),

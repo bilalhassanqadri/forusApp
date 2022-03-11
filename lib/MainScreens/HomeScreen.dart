@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:forus_app/drawer/drawer.dart';
 
 import '../Data.dart';
@@ -109,14 +110,17 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Container(
+              alignment: Alignment.center,
               height: 48,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(08),
                   border: Border.all(color: grey)),
-              child: TextFormField(
+              child: TextField(
+
                 cursorColor: Colors.white,
                 decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.search_sharp),
                   filled: true,
                   fillColor: Colors.white,
                   focusedBorder: OutlineInputBorder(
@@ -129,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   hintText: 'Search here',
+                  contentPadding: EdgeInsets.only(left: 10,top: 0,bottom: 0),
                   hintStyle: TextStyle(
                     fontSize: 18,
                   ),
@@ -139,6 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: 20,
           ),
+
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Text(
@@ -175,22 +181,24 @@ class _HomeScreenState extends State<HomeScreen> {
                           elevation: 0,
                           child: Stack(
                             children: [
+
                               Container(
                                 height: 225,
                                 width:
                                     MediaQuery.of(context).size.width / 2.4,
-                                child: Image.asset(
-                                  "assets/img2.png",
-                                  fit: BoxFit.fill,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  child: Image.asset(
+                                    "assets/img2.png",
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
-                                decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.circular(10)),
+
                               ),
                               Align(
                                 alignment: Alignment.bottomLeft,
                                 child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(4),
+
                                     child: BackdropFilter(
                                         filter: ImageFilter.blur(
                                           sigmaX: 10.0,
@@ -200,8 +208,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           width: MediaQuery.of(context).size.width/ 2.4,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(10),
-                                              bottomRight: Radius.circular(10),
+                                              bottomLeft: Radius.circular(12),
+                                              bottomRight: Radius.circular(12),
                                             )
                                           ),
                                           height: 37,

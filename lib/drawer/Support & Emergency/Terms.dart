@@ -32,7 +32,7 @@ class _TermsState extends State<Terms> {
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 10, right: 10),
-        child: Column(
+        child: ListView(
           children: [
             SizedBox(
               height: 15,
@@ -64,6 +64,9 @@ class _TermsState extends State<Terms> {
                 fontFamily: Regular,
               ),
 
+            ),
+            SizedBox(
+              height: 15,
             ),
           ],
         ),

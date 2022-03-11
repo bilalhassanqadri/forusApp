@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:forus_app/Data.dart';
 class Discription extends StatefulWidget {
   const Discription({Key? key}) : super(key: key);
@@ -18,36 +19,37 @@ class _DiscriptionState extends State<Discription> {
             Stack(
               children: [
                 Container(
+                  height: 350,
                   color: Colors.red,
-                    width: MediaQuery.of(context).size.width,
-                    child: Image.asset('assets/Rectangle.png',
-                      fit: BoxFit.fill,
-                    ),
+                  width: MediaQuery.of(context).size.width,
+                  child: Image.asset('assets/Rectangle.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
 
-             Padding(
-               padding: const EdgeInsets.only(top: 30, left: 20),
-               child: InkWell(
-                 child: Container(
+                Padding(
+                  padding: const EdgeInsets.only(top: 30, left: 20),
+                  child: InkWell(
+                      child: Container(
 
-                     child: Icon(Icons.arrow_back, color: Colors.black,)),
+                          child: Icon(Icons.arrow_back, color: Colors.black,)),
 
-               onTap: (){
-                 Navigator.pop(context);
-               }
-               ),
-             ),
+                      onTap: (){
+                        Navigator.pop(context);
+                      }
+                  ),
+                ),
                 Positioned(
-                  top: MediaQuery.of(context).size.height/2.1,
+                  top: 327,
                   child: Container(
-                    height: 50,
+                    height: 25,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(24),
-                        topRight: Radius.circular(24)
-                      )
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(24),
+                            topRight: Radius.circular(24)
+                        )
                     ),
                   ),
                 )
@@ -57,7 +59,7 @@ class _DiscriptionState extends State<Discription> {
             Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 44, right: 44),
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -65,11 +67,11 @@ class _DiscriptionState extends State<Discription> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text('Medicity Hospital',
-                          style: TextStyle(
-                            fontSize: 20, fontFamily: SemiBold
+                            style: TextStyle(
+                                fontSize: 20, fontFamily: SemiBold
+                            ),
                           ),
-                          ),
-                        Icon(Icons.favorite_border, color: Colors.black,)
+                          Icon(Icons.favorite_border, color: Colors.black,)
                         ],
                       ),
                       SizedBox(
@@ -80,12 +82,12 @@ class _DiscriptionState extends State<Discription> {
                             fontSize: 14, fontFamily: Regular
                         ),
                       ),
-                       Text('OTHER SERVICES AVAILABLE',
+                      Text('OTHER SERVICES AVAILABLE',
                         style: TextStyle(
                             fontSize: 14, fontFamily: Regular
                         ),
                       ),
-                       Text('Vaccine',
+                      Text('Vaccine',
                         style: TextStyle(
                             fontSize: 14, fontFamily: Regular
                         ),
@@ -101,7 +103,7 @@ class _DiscriptionState extends State<Discription> {
 
                       Text('Discription',
                         style: TextStyle(
-                            fontSize: 16, fontFamily: Medium,
+                          fontSize: 16, fontFamily: Medium,
                         ),
                       ),
 
@@ -121,15 +123,22 @@ class _DiscriptionState extends State<Discription> {
                           fontSize: 16, fontFamily: Medium,
                         ),
                       ),
-                          Row(
-                            children: [
-                              Icon(Icons.star,color: Colors.yellow),
-                              Icon(Icons.star,color: Colors.yellow),
-                              Icon(Icons.star,color: Colors.yellow),
-                              Icon(Icons.star,color: Colors.yellow),
-                              Icon(Icons.star,color: Colors.yellow),
-                            ],
-                          )
+                      RatingBar.builder(
+                        initialRating: 5,
+                        minRating: 1,
+                        direction: Axis.horizontal,
+                        allowHalfRating: true,
+                        itemCount: 5,
+                        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                        itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                        onRatingUpdate: (rating) {
+                          print(rating);
+                        },
+                      ),
+
 
                     ],
                   ),
@@ -141,64 +150,64 @@ class _DiscriptionState extends State<Discription> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-             children: [
+              children: [
 
-               InkWell(
-                 child: Container(
-                   height: 50,
-                   width: MediaQuery.of(context).size.width/2.7,
-                   decoration: BoxDecoration(
-                     color: cyan,
-                     borderRadius: BorderRadius.circular(6),
-                   ),
-                   child: Center(
-                     child: Row(
-                       mainAxisAlignment: MainAxisAlignment.center,
-                       children: [
-                         Icon(Icons.location_on, color: Colors.white,),
-                         SizedBox(
-                           width: 10,
-                         ),
-                         Text('Direction',
-                           style: TextStyle(
-                               fontSize: 18, fontFamily: Medium,
-                               color: Colors.white
-                           ),
-                         ),
-                       ],
-                     ),
-                   ),
-                 ),
-                 onTap: (){
-                   Navigator.pushNamed(context, 'SelectLocation');
-                 },
-               ),
-               Container(
-                 height: 50,
-                 width: MediaQuery.of(context).size.width/2.7,
-                 decoration: BoxDecoration(
-                   color: cyan,
-                   borderRadius: BorderRadius.circular(6),
-                 ),
-                 child: Center(
-                   child: Row(
-                     mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                       Icon(Icons.phone, color: Colors.white,),
-                       SizedBox(
-                         width: 10,
-                       ),
-                       Text('Phone',
-                         style: TextStyle(
-                             fontSize: 18, fontFamily: Medium,
-                             color: Colors.white
-                         ),
-                       ),
-                     ],
-                   ),
-                 ),
-               ),
-             ],
+                InkWell(
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width/2.7,
+                    decoration: BoxDecoration(
+                      color: cyan,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.location_on, color: Colors.white,),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('Direction',
+                            style: TextStyle(
+                                fontSize: 18, fontFamily: Medium,
+                                color: Colors.white
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  onTap: (){
+                    Navigator.pushNamed(context, 'SelectLocation');
+                  },
+                ),
+                Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width/2.7,
+                  decoration: BoxDecoration(
+                    color: cyan,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.phone, color: Colors.white,),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('Phone',
+                          style: TextStyle(
+                              fontSize: 18, fontFamily: Medium,
+                              color: Colors.white
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 20,
