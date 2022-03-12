@@ -14,7 +14,7 @@ class _TellAFriendState extends State<TellAFriend> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Advertising Request',
+        title: Text('Tell a friend ',
           style: TextStyle(
               fontFamily: SemiBold,
               fontSize: 20,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../Data.dart';
 import '../../Data.dart';
 class SupportEmergency extends StatefulWidget {
@@ -10,6 +11,12 @@ class SupportEmergency extends StatefulWidget {
 }
 
 class _SupportEmergencyState extends State<SupportEmergency> {
+  TextEditingController _numberCtrl = new TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    _numberCtrl.text = "911";
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -213,6 +220,55 @@ class _SupportEmergencyState extends State<SupportEmergency> {
                 width: 10,
               ),
             ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          InkWell(
+            onTap: ()async{
+              const number = '911'; //set the number here
+              bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+            },
+            child: Container(
+              height: 143,
+              width: 143,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(08),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xff908E8E).withOpacity(0.20),
+                    spreadRadius: 0,
+                    blurRadius: 12,
+                    offset: Offset(0, 4), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: 70, width: 70,
+                    child: Image.asset('assets/5741212.png',fit: BoxFit.fill,
+                    ),
+                  ),
+
+                  Center(
+                    child: Text('Emergency contact 911',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16, color: Colors.black,
+                        fontFamily: Regular,
+                      ),),
+                  )
+                ],
+              ),
+
+
+            ),
           ),
         ],
       ),

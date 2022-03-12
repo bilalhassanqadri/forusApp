@@ -57,19 +57,24 @@ class _drawerState extends State<drawer> {
           padding: const EdgeInsets.only(left: 20),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Image.asset('assets/Home.png'),
+              InkWell(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Row(
+                  children: [
+                    Image.asset('assets/Home.png'),
 
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('Home',
-                    style: TextStyle(fontSize: 16,
-                      fontFamily: Regular, color: darkgrey,
+                    SizedBox(
+                      width: 10,
                     ),
-                  )
-                ],
+                    Text('Home',
+                      style: TextStyle(fontSize: 16,
+                        fontFamily: Regular, color: darkgrey,
+                      ),
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: 22,
@@ -222,7 +227,28 @@ class _drawerState extends State<drawer> {
               SizedBox(
                 height: 22,
               ),
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, "AboutUs");
+                },
+                child: Row(
+                  children: [
+                    Image.asset('assets/Support.png'),
 
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('About Us',
+                      style: TextStyle(fontSize: 16,
+                        fontFamily: Regular, color: darkgrey,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 22,
+              ),
 //Logout
               InkWell(
                 child: Row(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:forus_app/Login&Signup/Login.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../Data.dart';
 
@@ -28,8 +29,12 @@ final EmailAdress4 = TextEditingController();
 final MobileNo2 = TextEditingController();
 final GoogleAccount = TextEditingController();
 final Facebookurl = TextEditingController();
+
+final picker = ImagePicker();
+late Future<PickedFile?> pickedFile = Future.value(null);
 class _RegisterYourBusinessState extends State<RegisterYourBusiness> {
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -534,46 +539,52 @@ class _RegisterYourBusinessState extends State<RegisterYourBusiness> {
 
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Container(
-                height: 60,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(06),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff908E8E).withOpacity(0.20),
-                      spreadRadius: 0,
-                      blurRadius: 12,
-                      offset: Offset(0, 4), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.white,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Required';
-
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        borderSide: BorderSide(
-                          width: 0,
-                          style: BorderStyle.none,
-                        )),
-                    hintText: 'Add Image',
-                    hintStyle: TextStyle(
-                      fontSize: 16,fontFamily: "Regular",
-                      color: textfieldcolor,
-                    ),
-                  suffixIcon: Icon(Icons.cloud_upload)
+              child: InkWell(
+                onTap: ()async {
+                  pickedFile = picker
+                      .getImage(
+                    source: ImageSource.gallery,
+                  )
+                      .whenComplete(() => {setState(() {})});
+                },
+                child: Container(
+                  height: 60,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(06),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xff908E8E).withOpacity(0.20),
+                        spreadRadius: 0,
+                        blurRadius: 12,
+                        offset: Offset(0, 4), // changes position of shadow
+                      ),
+                    ],
                   ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Add Image',
+                        style: TextStyle(
+                          fontSize: 16,fontFamily: "Regular",
+                          color: textfieldcolor,
+                        ),
+                        ),
+                        IconButton(onPressed: ()
+                      async {
+                pickedFile = picker
+                      .getImage(
+                source: ImageSource.gallery,
+                )
+                      .whenComplete(() => {setState(() {})});
+                },
+                            icon: Icon(Icons.cloud_upload))
+                      ],
+                    ),
+                  )
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'drawer/About Us.dart';
 import 'drawer/RequestForAdvertising.dart';
 import 'drawer/Support & Emergency/ContactUs.dart';
 import 'drawer/Support & Emergency/Feedback.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
       'settings': (context) => settings(),
       'SupportEmergency': (context) => SupportEmergency(),
       'ContactUs': (context) => ContactUs(),
+      'AboutUs': (context) => AboutUs(),
       'PrivacyPolicy': (context) => PrivacyPolicy(),
       'Terms': (context) => Terms(),
       'RequestForAdvertising': (context) => RequestForAdvertising(),
